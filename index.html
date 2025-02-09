@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Valentine's Wish for Ayushi</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Calibre:wght@700&display=swap');
+
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: pink;
+            font-family: 'Calibre', sans-serif;
+            overflow: hidden;
+            flex-direction: column;
+            position: relative;
+        }
+
+        .container {
+            text-align: center;
+            position: relative;
+        }
+
+        button {
+            font-size: 20px;
+            padding: 12px 25px;
+            background-color: red;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        /* Capitalized Bold Heading */
+        .valentine-text {
+            font-size: 30px;
+            font-weight: bold;
+            text-align: center;
+            color: gold;
+            text-shadow: 3px 3px 5px red;
+        }
+
+        /* Envelope Animation */
+        .envelope {
+            width: 250px;
+            height: 180px;
+            background: #ff4d4d;
+            position: relative;
+            border-radius: 10px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transition: transform 1s ease-in-out;
+        }
+
+        .envelope.open {
+            transform: translateY(-150px);
+        }
+
+        /* Letter */
+        .letter {
+            width: 220px;
+            height: 0;
+            background: #f7e5b9;
+            text-align: center;
+            position: absolute;
+            top: 0;
+            transition: height 2s ease-in-out;
+            overflow: hidden;
+            border-radius: 5px;
+            padding: 15px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+        }
+
+        .letter.open {
+            height: 400px;
+        }
+
+        .letter.close {
+            height: 0;
+        }
+
+        /* Message Typing Effect */
+        #letterText {
+            font-size: 14px;
+            font-weight: bold;
+            line-height: 1.6;
+            text-align: left;
+            color: darkred;
+        }
+
+        /* Stamp */
+        .stamp {
+            font-size: 30px;
+            color: red;
+            font-weight: bold;
+            opacity: 0;
+            transition: opacity 1s ease-in-out;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-shadow: 0 0 5px red, 0 0 15px red;
+            border: 3px solid red;
+            border-radius: 50%;
+            padding: 10px 20px;
+            animation: stamp-glow 1s infinite alternate;
+        }
+
+        .stamp.pause {
+            animation: none;
+        }
+
+        @keyframes stamp-glow {
+            0% { text-shadow: 0 0 10px red, 0 0 20px red; }
+            100% { text-shadow: 0 0 15px red, 0 0 30px red; }
+        }
+
+        /* Music Icon */
+        .music {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            font-size: 30px;
+            cursor: pointer;
+            color: red;
+            animation: pulse 1s infinite alternate;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            100% { transform: scale(1.1); }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <button id="openBtn">Open 💌</button>
+        <div class="valentine-text hidden">💖 HAPPY VALENTINE'S DAY MY LOVIEE CUTIEE PARTNER 💖</div>
+
+        <div class="envelope hidden" id="envelope">
+            <div class="letter" id="letter">
+                <p id="letterText"></p>
+            </div>
+        </div>
+        <p class="stamp hidden">OGGY ❤️</p>
+    </div>
+
+    <!-- Background Music -->
+    <audio id="bgMusic" loop>
+        <source src="your-song-file.mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
+    </audio>
+
+    <!-- Music Icon -->
+    <div class="music" onclick="toggleMusic()">🎵</div>
+
+    <script>
+        let music = document.getElementById("bgMusic");
+
+        function toggleMusic() {
+            if (music.paused) {
+                music.play();
+            } else {
+                music.pause();
+            }
+        }
+
+        document.getElementById("openBtn").addEventListener("click", function() {
+            this.style.display = "none"; 
+
+            // Start Music
+            music.play();
+
+            // Show Heading
+            let valentineText = document.querySelector(".valentine-text");
+            valentineText.classList.remove("hidden");
+
+            setTimeout(() => {
+                valentineText.classList.add("hidden");
+
+                let envelope = document.getElementById("envelope");
+                envelope.classList.remove("hidden");
+                envelope.classList.add("open");
+
+                let letter = document.getElementById("letter");
+                setTimeout(() => {
+                    letter.classList.add("open");
+
+                    let message = `Ayushi,  
+
+Sach bolun toh mujhe bade bade shabdon ki zaroorat nahi hai tujhe apni feelings batane ke liye. Tu meri life ka ek aisa hissa hai jo bina kisi dikhave ke, bina kisi zabardasti ke, bas apni jagah bana chuka hai.  
+
+Main jaanta hoon, kabhi tu overthink karti hai, kabhi mood swings aate hain, aur kabhi tere mann mein ajeeb ajeeb sawaal uthte hain. Par tu bas yeh yaad rakhna, chahe kuch bhi ho jaye, main yahin hoon—hamesha. Haath pakda hai toh kabhi chhodunga nahi, bas teri taraf bhi grip loose nahi honi chahiye.  
+
+Tere bina bhi life chalti rahegi, par tu hai toh sab kuch zyada behtar lagta hai. Teri hassi, tere nakhre, teri baatein—sab kuch.  
+
+Isliye bas itna hi kahunga,  
+Happy Valentine's Day, meri overthinking queen. ❤️  
+Tu tension mat le, main abhi bhi yahin hoon, aur hamesha rahunga.`;
+
+                    let i = 0;
+                    let speed = 50;
+                    let letterText = document.getElementById("letterText");
+
+                    function typeWriter() {
+                        if (i < message.length) {
+                            letterText.innerHTML += message.charAt(i);
+                            i++;
+                            setTimeout(typeWriter, speed);
+                        } else {
+                            setTimeout(() => {
+                                letter.classList.remove("open");
+                                envelope.classList.remove("open");
+
+                                let stamp = document.querySelector(".stamp");
+                                stamp.style.opacity = "1";
+                                stamp.classList.remove("hidden");
+                                stamp.classList.add("pause");
+                            }, 3000);
+                        }
+                    }
+
+                    typeWriter();
+                }, 2000);
+            }, 3000);
+        });
+    </script>
+</body>
+</html>
