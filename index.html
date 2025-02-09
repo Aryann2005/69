@@ -89,9 +89,9 @@
 
         /* Message Typing Effect */
         #letterText {
-            font-size: 14px;
+            font-size: 20px;
             font-weight: bold;
-            line-height: 1.6;
+            line-height: 1.3;
             text-align: left;
             color: darkred;
         }
@@ -102,25 +102,25 @@
             color: red;
             font-weight: bold;
             opacity: 0;
-            transition: opacity 1s ease-in-out;
+            transition: opacity 5s ease-in-out;
             position: absolute;
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
-            text-shadow: 0 0 5px red, 0 0 15px red;
-            border: 3px solid red;
+            text-shadow: 0 0 5px red, 0 0 15px baby pink;
+            border: 3px solid black;
             border-radius: 50%;
             padding: 10px 20px;
-            animation: stamp-glow 1s infinite alternate;
+            animation: stamp-glow 3s infinite alternate;
         }
 
         .stamp.pause {
-            animation: none;
+            animation: push;
         }
 
         @keyframes stamp-glow {
-            0% { text-shadow: 0 0 10px red, 0 0 20px red; }
-            100% { text-shadow: 0 0 15px red, 0 0 30px red; }
+            0% { text-shadow: 0 0 10px red, 0 0 30px baby pink; }
+            100% { text-shadow: 0 0 15px red, 0 0 40px baby pink; }
         }
 
         /* Music Icon */
@@ -196,7 +196,7 @@
 
                     let message = `Ayushi,  
 
-Sach bolun toh mujhe bade bade shabdon ki zaroorat nahi hai tujhe apni feelings batane ke liye. Tu meri life ka ek aisa hissa hai jo bina kisi dikhave ke, bina kisi zabardasti ke, bas apni jagah bana chuka hai.  
+ Tu meri life ka ek aisa hissa hai jo bina kisi dikhave ke, bina kisi zabardasti ke, bas apni jagah bana chuka hai.  
 Main jaanta hoon, kabhi tu overthink karti hai, kabhi mood swings aate hain, aur kabhi tere mann mein ajeeb ajeeb sawaal uthte hain. Par tu bas yeh yaad rakhna, chahe kuch bhi ho jaye, main yahin hoon—hamesha. Haath pakda hai toh kabhi chhodunga nahi, bas teri taraf bhi grip loose nahi honi chahiye.  
 Tere bina bhi life chalti rahegi, par tu hai toh sab kuch zyada behtar lagta hai. Teri hassi, tere nakhre, teri baatein—sab kuch.  
 Isliye bas itna hi kahunga,  
@@ -218,7 +218,7 @@ Tu tension mat le, main abhi bhi yahin hoon, aur hamesha rahunga.`;
                                 envelope.classList.remove("open");
 
                                 let stamp = document.querySelector(".stamp");
-                                stamp.style.opacity = "1";
+                                stamp.style.opacity = "5";
                                 stamp.classList.remove("hidden");
                                 stamp.classList.add("pause");
                             }, 3000);
